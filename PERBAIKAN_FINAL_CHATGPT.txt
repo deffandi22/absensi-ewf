@@ -1,0 +1,30 @@
+PERBAIKAN FINAL SISTEM ABSENSI EWF
+
+Ringkasan perbaikan:
+1. Layout admin, leader, dan employee disamakan dari sisi warna, logo, sidebar, topbar, mobile bottom nav, font, spacing, card, tabel, filter, dan tombol.
+2. Tombol orange diperbaiki agar tidak berubah biru saat hover/focus/active.
+3. Foto profil dibuat full bulat dengan object-fit: cover; ikon default profil disamakan menggunakan ikon person.
+4. Dashboard admin dan leader ditambah card Absen Ditolak.
+5. Dashboard admin dan leader: tombol Lihat Semua dipindahkan ke bawah teks kecil keterangan absensi terbaru.
+6. Leader ditambah halaman detail karyawan divisi dan aksi Detail pada tabel Data Karyawan Divisi.
+7. Detail karyawan admin dan leader sekarang menampilkan foto profil karyawan jika sudah diupload.
+8. Detail absensi admin, leader, dan detail riwayat employee sekarang menampilkan foto profil karyawan.
+9. Filter tanggal admin, leader, dan employee dirapikan dengan label Tanggal Mulai s/d Tanggal Akhir agar tidak kosong di mobile.
+10. Tabel dan isi tabel dirapikan agar lebih konsisten dan rapi di semua role.
+11. Tombol lokasi check-out/check-in dibuat mengikuti warna orange EWF.
+12. Route leader.employees.show ditambahkan.
+13. Blade welcome default Laravel diganti sederhana agar tidak memanggil route register yang tidak tersedia.
+
+Setelah ekstrak:
+1. composer install
+2. npm install
+3. php artisan key:generate jika APP_KEY kosong
+4. php artisan migrate --seed jika database belum ada
+5. php artisan storage:link
+6. php artisan optimize:clear
+7. php artisan serve
+
+Akun uji:
+Admin: admin@ewf.com / admin123
+Ketua: leader@ewf.com / leader123
+Karyawan: karyawan@ewf.com / karyawan123
