@@ -11,7 +11,7 @@ class OfficeNetworkMiddleware
 {
     public function handle(Request $request, Closure $next): Response
     {
-        $clientIp = $request->ip();
+        $clientIp = $this->getRealClientIp($request);
 
         /*
          * IP lokal untuk kebutuhan development.
@@ -60,6 +60,42 @@ class OfficeNetworkMiddleware
         }
 
         return $next($request);
+    }
+
+    private function getRealClientIp(Request $request): string
+    {
+        /*
+         * Saat aplikasi dideploy di Railway, request melewati proxy.
+         * Karena itu request()->ip() bisa membaca IP internal Railway.
+         * IP asli pengguna biasanya dikirim melalui header berikut.
+         */
+        $headers = [
+            'CF-Connecting-IP',
+            'X-Real-IP',
+            'X-Forwarded-For',
+        ];
+
+        foreach ($headers as $header) {
+            $value = $request->header($header);
+
+            if (!$value) {
+                continue;
+            }
+
+            /*
+             * X-Forwarded-For bisa berisi beberapa IP:
+             * IP_USER, IP_PROXY_1, IP_PROXY_2
+             * Yang kita ambil adalah IP pertama.
+             */
+            $ips = explode(',', $value);
+            $ip = trim($ips[0]);
+
+            if (filter_var($ip, FILTER_VALIDATE_IP)) {
+                return $ip;
+            }
+        }
+
+        return $request->ip();
     }
 
     private function isPrivateIp(string $ip): bool
