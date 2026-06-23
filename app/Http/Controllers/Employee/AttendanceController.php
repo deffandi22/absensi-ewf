@@ -117,7 +117,7 @@ class AttendanceController extends Controller
 
         if ($currentTime < $checkInStart) {
             return redirect('/employee/dashboard')
-                ->with('warning', 'Waktu check-in belum dibuka. Check-in dimulai pukul 07.00 WIB.');
+                ->with('warning', 'Waktu check-in belum dibuka. Check-in dimulai pukul ' . $this->formatTimeForMessage($checkInStart) . ' WIB.');
         }
 
         $locationError = $this->validateOfficeRadius(
@@ -216,12 +216,12 @@ class AttendanceController extends Controller
 
         if ($currentTime < $checkOutStart) {
             return redirect('/employee/dashboard')
-                ->with('warning', 'Waktu check-out belum dibuka. Check-out dimulai pukul 17.00 WIB.');
+                ->with('warning', 'Waktu check-out belum dibuka. Check-out dimulai pukul ' . $this->formatTimeForMessage($checkOutStart) . ' WIB.');
         }
 
         if ($currentTime > $checkOutEnd) {
             return redirect('/employee/dashboard')
-                ->with('warning', 'Waktu check-out sudah berakhir. Check-out hanya sampai pukul 19.59 WIB.');
+                ->with('warning', 'Waktu check-out sudah berakhir. Check-out hanya sampai pukul ' . $this->formatTimeForMessage($checkOutEnd) . ' WIB.');
         }
 
         $locationError = $this->validateOfficeRadius(
@@ -253,6 +253,17 @@ class AttendanceController extends Controller
     {
         return now('Asia/Jakarta');
     }
+
+    private function formatTimeForMessage($time)
+    {
+        if (!$time) {
+            return '-';
+        }
+
+        return \Carbon\Carbon::parse($time)->format('H:i');
+    }
+
+
 
     private function getTodayAttendance($userId)
     {
