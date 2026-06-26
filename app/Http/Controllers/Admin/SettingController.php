@@ -95,29 +95,4 @@ class SettingController extends Controller
             ->route('admin.settings.index')
             ->with('success', 'Pengaturan sistem berhasil diperbarui.');
     }
-
-    public function resetDefault()
-    {
-        $defaults = [
-            'office_ip' => '127.0.0.1',
-            'check_in_start' => '07:00',
-            'check_in_end' => '08:00',
-            'check_out_start' => '17:00',
-            'check_out_end' => '20:00',
-            'office_latitude' => '-7.291958',
-            'office_longitude' => '112.758690',
-            'allowed_radius' => '100',
-        ];
-
-        foreach ($defaults as $key => $value) {
-            Setting::updateOrCreate(
-                ['key' => $key],
-                ['value' => $value]
-            );
-        }
-
-        return redirect()
-            ->route('admin.settings.index')
-            ->with('success', 'Pengaturan sistem berhasil dikembalikan ke default.');
-    }
 }
