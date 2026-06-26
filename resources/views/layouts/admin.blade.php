@@ -337,6 +337,77 @@
             align-items: center;
             justify-content: center;
         }
+
+        .custom-pagination-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 24px;
+        }
+
+        .custom-pagination {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .page-btn {
+            min-width: 38px;
+            height: 38px;
+            padding: 0 12px;
+            border-radius: 10px;
+            border: 1px solid #e5e7eb;
+            background: #ffffff;
+            color: #374151;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s ease;
+        }
+
+        .page-btn:hover {
+            background: #f97316;
+            border-color: #f97316;
+            color: #ffffff;
+        }
+
+        .page-btn.active {
+            background: #f97316;
+            border-color: #f97316;
+            color: #ffffff;
+            box-shadow: 0 6px 16px rgba(249, 115, 22, 0.25);
+        }
+
+        .page-btn.disabled {
+            background: #f3f4f6;
+            color: #9ca3af;
+            cursor: not-allowed;
+        }
+
+        .page-btn.dots {
+            border: none;
+            background: transparent;
+            color: #9ca3af;
+            cursor: default;
+        }
+
+        @media (max-width: 576px) {
+            .custom-pagination {
+                gap: 6px;
+            }
+
+            .page-btn {
+                min-width: 34px;
+                height: 34px;
+                padding: 0 10px;
+                font-size: 13px;
+                border-radius: 8px;
+            }
+        }
         
     </style>
 </head>
