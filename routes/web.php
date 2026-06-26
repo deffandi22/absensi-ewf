@@ -62,6 +62,7 @@ Route::middleware('office.network')->group(function () {
 
             Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
             Route::put('/settings', [SettingController::class, 'update'])->name('settings.update');
+            Route::post('/admin/settings/reset-default', [SettingController::class, 'resetDefault'])->name('admin.settings.resetDefault');
         });
 
         Route::middleware('role:leader')->prefix('leader')->name('leader.')->group(function () {

@@ -193,6 +193,15 @@
                         Simpan Pengaturan
                     </button>
                 </div>
+
+                <form action="{{ route('admin.settings.resetDefault') }}" method="POST"
+                    onsubmit="return confirm('Yakin ingin mengembalikan pengaturan sistem ke default?')">
+                    @csrf
+
+                    <button type="submit" class="reset-btn">
+                        Reset Default
+                    </button>
+                </form>
             </div>
         </div>
     </form>

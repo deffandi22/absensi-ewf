@@ -337,6 +337,21 @@
             align-items: center;
             justify-content: center;
         }
+
+        .reset-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .reset-btn:hover {
+            background: #bb2d3b;
+        }
     </style>
 </head>
 <body>
