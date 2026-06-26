@@ -69,19 +69,6 @@
             </div>
         </div>
 
-        <div class="col-md-6 col-xl">
-            <div class="card stat-card h-100">
-                <div class="card-body d-flex align-items-center justify-content-between p-4">
-                    <div>
-                        <p class="text-muted mb-1">Absen Ditolak</p>
-                        <h3 class="fw-bold mb-0">{{ $rejectedAttendances }}</h3>
-                    </div>
-                    <div class="stat-icon icon-purple">
-                        <i class="bi bi-x-circle-fill"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <div class="row g-4">
