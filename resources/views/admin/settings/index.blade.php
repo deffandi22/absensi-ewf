@@ -182,9 +182,6 @@
                             </div>
                         </div>
 
-                        <div class="alert alert-info rounded-4 border-0 mt-4 mb-0">
-                            Aturan saat ini: check-in normal dimulai pukul 07.00 sampai 07.59, check-in setelah itu ditandai terlambat. Check-out dimulai pukul 17.00 sampai 19.59.
-                        </div>
                     </div>
                 </div>
 
